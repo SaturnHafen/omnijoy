@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="joycon-addon"
+config/name="omnijoy"
 run/main_scene="res://JoyCons/Demos/Preview.tscn"
 config/icon="res://icon.png"
 
