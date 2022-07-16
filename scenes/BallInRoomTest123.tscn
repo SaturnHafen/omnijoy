@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://JoyCons/Demos/Plot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://JoyCons/Demos/MovementController.gd" type="Script" id=2]
+[ext_resource path="res://scenes/CameraJoint.gd" type="Script" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=4]
+
+[sub_resource type="PrismMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0.972549, 0, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.918405, 0.395642, 0, -0.395642, -0.918405, -13.3784, 10.6083, 0 )
+
+[node name="playerThing" type="RigidBody" parent="."]
+transform = Transform( 0.999362, -0.0357018, 0, 0.0357018, 0.999362, 0, 0, 0, 1, 13.521, 2.74344, 2.74185 )
+physics_material_override = SubResource( 1 )
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+linear_damp = 1.0
+script = ExtResource( 2 )
+
+[node name="playersphere" type="MeshInstance" parent="playerThing"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../CSGCylinder")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="playerThing"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="hat" type="MeshInstance" parent="playerThing"]
+transform = Transform( 0.60383, 0, 0, 0, 0.2, 0, 0, 0, 0.574733, -0.100706, 0.948776, 0.0243859 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="SpringArm" type="SpringArm" parent="playerThing"]
+spring_length = 7.0
+margin = 0.2
+script = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="playerThing/SpringArm"]
+transform = Transform( 0.707107, -0.5, 0.5, -1.49012e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 8.67203, 54.6883, 2.58941 )
+current = true
+
+[node name="Plot" parent="playerThing/SpringArm/Camera" instance=ExtResource( 1 )]
+position = Vector2( 18, 318 )
+
+[node name="Ground" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 6 )
+operation = 1
+use_collision = true
+width = 4.0
+height = 1.0
+depth = 4.0
+
+[node name="Walls" type="CSGBox" parent="Ground"]
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 5, 0, 2, 0 )
+width = 4.0
+height = 5.0
+depth = 4.0
+
+[node name="Air" type="CSGBox" parent="Ground/Walls"]
+transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 1, 0 )
+operation = 2
+
+[node name="Loch3" type="CSGBox" parent="Ground/Walls"]
+transform = Transform( 0.05, 0, 0, 0, 1, 0, 0, 0, 1, 0.998571, -1.52858, -0.0263466 )
+operation = 2
+
+[node name="Loch2" type="CSGBox" parent="Ground/Walls"]
+transform = Transform( 0.05, 0, 0, 0, 1, 0, 0, 0, 0.2, -0.252194, -1.75872, 0 )
+operation = 2
+
+[node name="Loch4" type="CSGBox" parent="Ground/Walls"]
+transform = Transform( 0.05, 0, 0, 0, 1, 0, 0, 0, 0.2, 0.387666, -1.75872, -0.00854225 )
+operation = 2
+
+[node name="Loch5" type="CSGBox" parent="Ground/Walls"]
+transform = Transform( 0.05, 0, 0, 0, 1, 0, 0, 0, 0.2, 0.385736, -1.75872, -1.26389 )
+operation = 2
