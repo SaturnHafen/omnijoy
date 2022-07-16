@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/player.gd" type="Script" id=1]
 [ext_resource path="res://JoyCons/JoyCon.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.495536, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.3
 height = 0.6
 
-[node name="Player" type="Spatial"]
+[sub_resource type="SphereShape" id=4]
+radius = 0.3
+
+[node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
+curve = SubResource( 3 )
 
 [node name="JoyCon" parent="." instance=ExtResource( 2 )]
 
@@ -22,6 +29,9 @@ material/0 = null
 [node name="MotionControlTimeout" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
 
 [connection signal="button_pressed" from="JoyCon" to="." method="_on_joycon_button_pressed"]
 [connection signal="timeout" from="MotionControlTimeout" to="." method="_on_MotionControlTimeout"]

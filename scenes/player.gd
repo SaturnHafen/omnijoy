@@ -11,6 +11,8 @@ signal try_rolling
 var triggered = false
 var motion_allowed = true
 
+export var curve: Curve
+
 func init(manager, joycon_id):
 	print("player._init()")
 	$JoyCon.set_controller(joycon_id, manager)
