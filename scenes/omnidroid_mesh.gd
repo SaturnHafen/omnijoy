@@ -17,7 +17,7 @@ func _ready():
 	$right.init(manager, 3)
 
 func _physics_process(delta):
-	$body.add_central_force($body.linear_velocity * -2)
+	$body.add_central_force($body.linear_velocity * -4)
 	for arm in [$front, $back, $left, $right]:
 		var target = $body.global_transform.origin
 		var source = arm.global_transform.origin
