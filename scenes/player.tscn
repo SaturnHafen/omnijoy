@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/player.gd" type="Script" id=1]
 [ext_resource path="res://JoyCons/JoyCon.tscn" type="PackedScene" id=2]
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.495536, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.518868, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.3
@@ -15,7 +15,7 @@ radius = 0.3
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
-curve = SubResource( 3 )
+curve = SubResource( 5 )
 
 [node name="JoyCon" parent="." instance=ExtResource( 2 )]
 
