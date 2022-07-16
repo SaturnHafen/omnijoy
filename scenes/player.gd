@@ -58,7 +58,7 @@ func _physics_process(delta: float):
 		motion_allowed = true
 
 func _process(delta):
-	var acceleration = $JoyCon.linear_accel
+	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
 	
 	if motion_allowed and not triggered and acceleration.length_squared() > pow(hight_trigger, 2):
