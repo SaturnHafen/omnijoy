@@ -5,7 +5,7 @@
 [ext_resource path="res://env_assets/canyon/Albedo.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1, 1, 1.20692 )
+extents = Vector3( 1, 1, 4.04959 )
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -16,14 +16,82 @@ normal_texture = ExtResource( 3 )
 [node name="Spatial2" type="StaticBody"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 25.7673, 0, 0, 0, 1, 0, 0, 0, 10.9961, 0, 2.90792, 23.6852 )
+transform = Transform( 2.10242, 0.0242496, 0, -0.16229, 0.314148, 0, 0, 0, 3.32308, 22.9652, -0.158767, -0.931843 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 2.10419, 0.0205415, 0, -0.137473, 0.314412, 0, 0, 0, 2.72055, 18.8377, -0.0996027, 4.28261 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 2.10464, 0.0194793, 0.00225059, -0.130385, 0.314431, 0.0363286, -4.90965e-10, -0.00553194, 2.07281, 14.6369, 0.119759, 3.0203 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 2.10721, -0.0117705, -0.00109317, 0.0787778, 0.314845, 0.0292408, 1.22741e-10, -0.00328298, 2.80818, 10.5643, 0.169652, 3.43321 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 2.10646, -0.0144572, -1.82496e-05, 0.0967452, 0.314718, 0.0140635, -0.00134993, -0.00451936, 0.979413, 10.5361, 0.084561, -1.1249 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 2.10721, -0.0117711, 0, 0.0787778, 0.314863, 0, 0, 0, 1.44771, 6.37253, 0.0899764, 3.06845 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="."]
+transform = Transform( 2.10857, -0.00321699, 0, 0.0215296, 0.315066, 0, 0, 0, 1.44771, 6.38163, 0.119983, -0.453979 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="."]
+transform = Transform( 1.12403, 0.0539439, -0.474442, -0.200185, 0.310342, 0.0186098, 0.200997, 0.00741755, 2.67175, 6.74396, 0.339396, 3.13189 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="."]
+transform = Transform( 2.07292, 0.00152488, -0.443174, -0.013076, 0.315069, -0.016568, 0.386489, 0.00248102, 2.37638, 3.58091, 0.65521, 3.16353 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="."]
+transform = Transform( 0.757059, -0.041683, 0.104409, 0.103601, 0.312263, 0.00390331, 0.141907, -0.00559641, -0.559859, 0.580683, 0.533992, 3.81873 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="."]
+transform = Transform( 0.252697, -0.0536048, -0.177479, 0.0448383, 0.31039, -0.00663505, 0.0474383, -0.00783279, 0.951679, 0.13407, 0.466641, 0.622414 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="."]
+transform = Transform( 1.62157, 0.00152488, -0.0800567, -0.0102289, 0.315069, -0.00299291, 0.302336, 0.00248102, 0.42928, -1.53718, 0.687334, -2.99573 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="."]
+transform = Transform( 0.336655, -0.0804032, -0.0835063, 0.0875519, 0.318416, -0.00312189, 0.0633935, -0.0127745, 0.447777, -3.44518, 0.640469, -3.38014 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="."]
+transform = Transform( 1.62157, -0.0227712, -0.00938529, -0.0102289, 0.285291, -0.0236323, 0.302336, 0.131785, 0.0495381, -1.88285, 0.627145, -1.14381 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="."]
+transform = Transform( 4.08378, 0.00152488, -0.147655, -0.0257605, 0.315069, -0.00552007, 0.761409, 0.00248102, 0.791755, -4.78309, 0.478723, 1.60249 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="."]
+transform = Transform( 1.62157, 0.00152488, -0.0800567, -0.0102289, 0.315069, -0.00299291, 0.302336, 0.00248102, 0.42928, -5.47409, 0.517598, -3.73111 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="."]
+transform = Transform( 4.08292, 0.00656281, -0.340618, -0.0933261, 0.314996, -0.012734, 0.760776, 0.00342003, 1.82646, -12.9974, 0.428831, 0.0702477 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="."]
+transform = Transform( 4.08292, 0.00656281, -0.340618, -0.0933261, 0.314996, -0.012734, 0.760776, 0.00342003, 1.82646, -21.2093, 0.616535, -1.45988 )
 shape = SubResource( 2 )
 
 [node name="canyon2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.9573 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.448208 )
 material_override = SubResource( 1 )
 mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.0756575, 0.536317, 0.840619, -7.37004e-08, -0.843035, 0.537859, 0.997134, 0.040693, 0.063782, -5.13396, 9.08191, 44.0995 )
+transform = Transform( -0.0756575, 0.536317, 0.840619, -7.37004e-08, -0.843035, 0.537859, 0.997134, 0.040693, 0.063782, -5.13396, 9.08191, -5.40959 )
