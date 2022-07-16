@@ -250,6 +250,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.48
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.482, -2.731 )
 
 [node name="body" type="RigidBody" parent="."]
+collision_layer = 2
 
 [node name="mesh" type="MeshInstance" parent="body"]
 transform = Transform( 0.900613, 0, 0, 0, 0.900613, 0, 0, 0, 0.900613, 0.0123987, 0, 0.94615 )
@@ -561,3 +562,5 @@ tip_bone = "Bone.035"
 use_magnet = true
 magnet = Vector3( 0, -5, 1 )
 target_node = NodePath("../../../right")
+
+[connection signal="body_entered" from="body" to="." method="_on_body_body_entered"]

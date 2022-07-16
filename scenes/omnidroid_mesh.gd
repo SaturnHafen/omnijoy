@@ -28,3 +28,6 @@ func _physics_process(delta):
 		strength = sign(strength) * pow(abs(strength), 2.5) * 60
 		var force = direction.normalized() * strength
 		$body.add_central_force(force)
+
+func _on_body_collide(body):
+	print("you die (body)!")
