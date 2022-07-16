@@ -7,11 +7,13 @@ export var hight_trigger: float = 0.8
 export var movement_speed: float = 5
 
 signal try_rolling
+signal move(acceleration)
 
 var triggered = false
 var motion_allowed = true
 
 func init(manager, joycon_id):
+	print("player._init()")
 	$JoyCon.set_controller(joycon_id, manager)
 		
 	var material = SpatialMaterial.new()
@@ -27,6 +29,7 @@ func _process(delta):
 	acceleration *= Vector3(1, 0, 1)
 	
 	if motion_allowed and not triggered and acceleration.length_squared() > pow(hight_trigger, 2):
+		emit_signal("move", acceleration)
 		var target_position = $Cube.translation + acceleration * (Vector3(1, 0, 1) * movement_speed)
 		$Tween.interpolate_property($Cube, "translation", $Cube.translation, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
