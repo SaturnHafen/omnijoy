@@ -10,10 +10,12 @@ signal try_rolling
 
 var triggered: bool = false
 var motion_allowed: bool = true
-var animation_timer: int = 0
+var animation_timer: float = 0
+var current_from: Vector3
+var current_to: Vector3 
 var current_acceleration: Vector3 = Vector3(0, 0, 0)
 
-export var animation_duration: int = 32
+export var animation_duration: float = 0.5
 
 export var curve: Curve
 
@@ -32,23 +34,28 @@ func init(manager, joycon_id):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _physics_process(delta: float):
 	
 	if animation_timer > 0:
-		animation_timer -= 1
-		var time = 1 - (float(animation_timer) / animation_duration)
-		var acceleration = current_acceleration / animation_duration
-		var heigth = curve.interpolate(time)
-		move_and_collide(acceleration)
-		translation.y = heigth
+		animation_timer -= delta
+		var time = 1 - (animation_timer / animation_duration)
+		var to = current_from.linear_interpolate(current_to, time)
+		to.y += curve.interpolate(time)
+		var velocity = to - global_transform.origin
+		move_and_collide(velocity)
 	else:
+		if not motion_allowed:
+			pass#move_and_collide(Vector3(1, 0, 0) * delta)
 		motion_allowed = true
-	
+
+func _process(delta):
 	var acceleration = $JoyCon.linear_accel
 	acceleration *= Vector3(1, 0, 1)
 	
 	if motion_allowed and not triggered and acceleration.length_squared() > pow(hight_trigger, 2):
-		current_acceleration = acceleration * Vector3(1, 0, 1)
+		current_from = global_transform.origin
+		current_to = current_from + acceleration
+		print(current_from, current_to)
 		animation_timer = animation_duration
 		$JoyCon.rumble(5, 1)
 		
