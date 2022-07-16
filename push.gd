@@ -12,5 +12,3 @@ func _physics_process(delta):
 		strength = sign(strength) * pow(abs(strength), 2.5) * 60
 		var force = direction.normalized() * strength
 		$RigidBody.add_central_force(force)
-		#print(force)
-		
