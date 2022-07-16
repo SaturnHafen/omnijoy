@@ -1,5 +1,6 @@
 extends KinematicBody
 
+export var enableKeybordControll:bool = false
 
 export var lower_trigger: float = 0.2
 export var hight_trigger: float = 0.8
@@ -47,17 +48,35 @@ func _process(_delta):
 	var acceleration = $JoyCon.linear_accel
 	acceleration *= Vector3(1, 0, 1)
 	
-	if motion_allowed and not triggered and acceleration.length_squared() > pow(hight_trigger, 2):
-		current_acceleration = acceleration * Vector3(1, 0, 1)
-		animation_timer = animation_duration
-		$JoyCon.rumble(5, 1)
-		
-		triggered = true
-		motion_allowed = false
-		$MotionControlTimeout.start()
-		
+	if motion_allowed and not triggered:
+		if acceleration.length_squared() > pow(hight_trigger, 2):
+			startFootMovement(acceleration)
+		if enableKeybordControll and (Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up")):
+			startFootMovement(getInputDirection())
+	
 	if acceleration.length_squared() < pow(lower_trigger, 2):
 		triggered = false
+		
+func startFootMovement(acceleration:Vector3):
+	current_acceleration = acceleration * Vector3(1, 0, 1)
+	animation_timer = animation_duration
+	$JoyCon.rumble(5, 1)
+	
+	triggered = true
+	motion_allowed = false
+	$MotionControlTimeout.start()
+	
+func getInputDirection()->Vector3:
+	var inputDirection:Vector3 = Vector3.ZERO
+	if (Input.is_action_pressed("ui_down")):
+		inputDirection = Vector3.BACK
+	if (Input.is_action_pressed("ui_up")):
+		inputDirection = Vector3.UP
+	if (Input.is_action_pressed("ui_left")):
+		inputDirection = Vector3.LEFT
+	if (Input.is_action_pressed("ui_right")):
+		inputDirection = Vector3.RIGHT
+	return inputDirection
 
 
 func _on_joycon_button_pressed(button_name):
