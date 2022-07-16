@@ -18,7 +18,12 @@ func _ready():
 func _process(delta):
 	#_spring_arm.translation = translation
 	#print(translation)
-	
+	move()
+
+
+### MOVEMENT
+
+func move():
 	var forceToAdd:Vector3 = Vector3.ZERO
 	
 	if Input.is_action_pressed("ui_left"):
@@ -37,5 +42,7 @@ func _process(delta):
 		add_central_force(forceToAdd * speed )
 
 
-	
-	#add_central_force(-0.4* linear_velocity)
+### COLLISIONS
+
+func _on_playerThing_body_entered(body):
+	print(body.is_in_group('DamagingObstacle'))

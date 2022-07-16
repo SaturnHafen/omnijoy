@@ -1,13 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://JoyCons/Demos/Plot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/MovementController.gd" type="Script" id=2]
-[ext_resource path="res://scenes/CameraJoint.gd" type="Script" id=3]
-[ext_resource path="res://env_assets/stone.OBJ" type="ArrayMesh" id=4]
-[ext_resource path="res://env_assets/stone_normal.png" type="Texture" id=5]
-[ext_resource path="res://env_assets/stone_albedo.png" type="Texture" id=6]
-[ext_resource path="res://env_assets/stone_gloss.png" type="Texture" id=7]
-[ext_resource path="res://env_assets/stone_ao.png" type="Texture" id=8]
+[ext_resource path="res://scenes/env_objects/Stone.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -25,19 +20,6 @@ albedo_color = Color( 1, 0, 0, 1 )
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 1, 0.972549, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=7]
-albedo_texture = ExtResource( 6 )
-roughness = 0.5
-roughness_texture = ExtResource( 7 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 5 )
-ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 8 )
-ao_on_uv2 = false
-ao_texture_channel = 0
-
 [node name="Spatial" type="Spatial"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -53,6 +35,8 @@ position = Vector2( 18, 318 )
 [node name="playerThing" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.041, 0 )
 physics_material_override = SubResource( 1 )
+contacts_reported = 10
+contact_monitor = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 linear_damp = 2.0
@@ -122,8 +106,17 @@ operation = 2
 transform = Transform( 0.05, 0, 0, 0, 1, 0, 0, 0, 0.2, 0.385736, -1.75872, -1.26389 )
 operation = 2
 
-[node name="Stone" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.50683, 0 )
-material_override = SubResource( 7 )
-mesh = ExtResource( 4 )
-material/0 = null
+[node name="Stones" type="Node" parent="."]
+
+[node name="Stone" parent="Stones" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.91774 )
+
+[node name="Stone2" parent="Stones" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03608, -2.69042 )
+
+[node name="Stone3" parent="Stones" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465383, 2.95477 )
+
+[node name="Stone4" parent="Stones" instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="playerThing" to="playerThing" method="_on_playerThing_body_entered"]
