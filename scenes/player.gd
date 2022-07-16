@@ -1,4 +1,4 @@
-extends Spatial
+extends KinematicBody
 
 
 export var lower_trigger: float = 0.2
@@ -8,13 +8,19 @@ export var movement_speed: float = 5
 
 signal try_rolling
 
-var triggered = false
-var motion_allowed = true
+var triggered: bool = false
+var motion_allowed: bool = true
+var animation_timer: int = 0
+var current_acceleration: Vector3 = Vector3(0, 0, 0)
+
+export var animation_duration: int = 32
+
+export var curve: Curve
 
 func init(manager, joycon_id):
 	print("player._init()")
 	$JoyCon.set_controller(joycon_id, manager)
-		
+	
 	var material = SpatialMaterial.new()
 	var color: Color = $JoyCon.color
 	color.a = 0.3
@@ -26,12 +32,24 @@ func init(manager, joycon_id):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	
+	if animation_timer > 0:
+		animation_timer -= 1
+		var time = 1 - (float(animation_timer) / animation_duration)
+		var acceleration = current_acceleration / animation_duration
+		var heigth = curve.interpolate(time)
+		move_and_collide(acceleration)
+		translation.y = heigth
+	else:
+		motion_allowed = true
+	
 	var acceleration = $JoyCon.linear_accel
 	acceleration *= Vector3(1, 0, 1)
 	
 	if motion_allowed and not triggered and acceleration.length_squared() > pow(hight_trigger, 2):
-		translate(acceleration)
+		current_acceleration = acceleration * Vector3(1, 0, 1)
+		animation_timer = animation_duration
 		$JoyCon.rumble(5, 1)
 		
 		triggered = true
@@ -51,7 +69,3 @@ func _on_joycon_button_pressed(button_name):
 
 	elif button_name == 'z': # check if rolling
 		emit_signal("try_rolling")
-
-
-func _on_MotionControlTimeout():
-	motion_allowed = true
