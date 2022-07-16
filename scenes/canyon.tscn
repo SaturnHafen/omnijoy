@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://env_assets/canyon/canyonSmall.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://scenes/env_objects/mrIncredible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://env_assets/canyon/Normal_Map.png" type="Texture" id=3]
 [ext_resource path="res://env_assets/canyon/Albedo.png" type="Texture" id=4]
 
@@ -27,3 +28,6 @@ material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.0756575, 0.536317, 0.840619, -7.37004e-08, -0.843035, 0.537859, 0.997134, 0.040693, 0.063782, -5.13396, 9.08191, 44.0995 )
+
+[node name="MrIncredible" parent="." instance=ExtResource( 2 )]
+transform = Transform( -2.18557e-10, 0, 0.005, 0, 0.005, 0, -0.005, 0, -2.18557e-10, 0, 1.07317, 48.5369 )

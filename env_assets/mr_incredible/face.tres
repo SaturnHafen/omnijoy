@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://env_assets/mr_incredible/Tex_0003_3.png" type="Texture" id=1]
+
+[resource]
+albedo_texture = ExtResource( 1 )
