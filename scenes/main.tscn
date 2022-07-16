@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/canyon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/playerThing.tscn" type="PackedScene" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="canyon" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.645906, 0.00390345, 0.763407, -0.286304, 0.92824, 0.23749, -0.707698, -0.371963, 0.600673, -15.9035, 19.3004, 27.4507 )
+
+[node name="playerThing" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8038, 7.51925, 20.1512 )
