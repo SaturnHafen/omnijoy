@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/playerInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/MovementController.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=4]
+
+[sub_resource type="PrismMesh" id=8]
+
+[sub_resource type="PrismMesh" id=5]
+
+[node name="playerThing" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.041, 0 )
+physics_material_override = SubResource( 1 )
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource( 2 )
+
+[node name="playersphere" type="MeshInstance" parent="."]
+material_override = SubResource( 9 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -0.613882, 0, 1, -2.68336e-08, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="nose" type="MeshInstance" parent="."]
+transform = Transform( -0.480111, -0.0400771, -0.00462409, 0.028593, -0.138782, -0.129437, 0.0353025, -0.43264, 0.0419493, -0.120938, -0.0286088, -0.776203 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="hat" type="MeshInstance" parent="."]
+transform = Transform( 0.467274, -4.65661e-10, 0, 0, 0.2, 0, 0, 0, 0.412285, -0.100706, 0.948776, 0.0243859 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="TestSpringArm" type="SpringArm" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+spring_length = 7.0
+
+[node name="Camera" type="Camera" parent="TestSpringArm"]
+transform = Transform( 1, 0, 0, 0, 0.915318, 0.402731, 0, -0.402731, 0.915318, 0, -0.976667, 5.42972 )
+current = true
+
+[node name="playerInfo" parent="TestSpringArm/Camera" instance=ExtResource( 1 )]
