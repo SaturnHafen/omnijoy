@@ -26,8 +26,12 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 
 
 [node name="RollingTimer" type="Timer" parent="."]
 
+[connection signal="move" from="Player0" to="mesh" method="_on_Player0_move"]
 [connection signal="try_rolling" from="Player0" to="." method="_on_Player0_rolling"]
+[connection signal="move" from="Player1" to="mesh" method="_on_Player1_move"]
 [connection signal="try_rolling" from="Player1" to="." method="_on_Player1_rolling"]
+[connection signal="move" from="Player2" to="mesh" method="_on_Player2_move"]
 [connection signal="try_rolling" from="Player2" to="." method="_on_Player2_rolling"]
+[connection signal="move" from="Player3" to="mesh" method="_on_Player3_move"]
 [connection signal="try_rolling" from="Player3" to="." method="_on_Player3_rolling"]
 [connection signal="timeout" from="RollingTimer" to="." method="_on_RollingTimer"]
