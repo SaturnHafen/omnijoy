@@ -16,6 +16,7 @@ _global_script_class_icons={
 
 config/name="omnijoy"
 run/main_scene="res://JoyCons/Demos/Preview.tscn"
+boot_splash/image="res://gamedev.png"
 config/icon="res://icon.png"
 
 [editor_plugins]
