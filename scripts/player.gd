@@ -33,8 +33,8 @@ func init(manager, joycon_id):
 	material.albedo_color = color
 	material.flags_transparent = true
 	
-	for i in $Cube.mesh.get_surface_count():
-		$Cube.set_surface_material(i, material)
+	for i in $Indicator.mesh.get_surface_count():
+		$Indicator.set_surface_material(i, material)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -100,7 +100,7 @@ func handle_collision(collision: KinematicCollision):
 
 func _on_joycon_button_pressed(button_name):
 	if button_name == 'math':
-		$Cube.translation = Vector3()
+		$Indicator.translation = Vector3()
 		
 	elif button_name == 'joystick': # do detaching
 		pass

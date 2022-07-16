@@ -1,16 +1,13 @@
 extends Spatial
 
-var manager = preload("res://JoyCons/JoyConManager.gd").new()
 
 func _ready():
 	$body/Skeleton/ik_back.start()
 	$body/Skeleton/ik_front.start()
 	$body/Skeleton/ik_left.start()
 	$body/Skeleton/ik_right.start()
-	
-	if manager.init_devices() < 4:
-		assert(false, "There must be 4 JoyCons")
 
+func init(manager):
 	$front.init(manager, 0)
 	$back.init(manager, 1)
 	$left.init(manager, 2)
