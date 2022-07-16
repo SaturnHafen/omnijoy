@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var enableKeybordControll:bool = false
+export var enableKeybordControll: bool = true
 
 export var lower_trigger: float = 0.2
 export var hight_trigger: float = 0.8
@@ -52,10 +52,9 @@ func _physics_process(delta: float):
 			handle_collision(collision)
 		accum_gravity = 0
 	else:
-		if global_transform.origin.y > 0:
-			accum_gravity += delta * gravity
-			if move_and_collide(Vector3(0, accum_gravity, 0)):
-				accum_gravity = 0
+		accum_gravity += delta * gravity
+		if move_and_collide(Vector3(0, accum_gravity, 0)):
+			accum_gravity = 0
 		motion_allowed = true
 
 func _process(delta):
@@ -86,7 +85,7 @@ func getInputDirection()->Vector3:
 	if (Input.is_action_pressed("ui_down")):
 		inputDirection = Vector3.BACK
 	if (Input.is_action_pressed("ui_up")):
-		inputDirection = Vector3.UP
+		inputDirection = Vector3.FORWARD
 	if (Input.is_action_pressed("ui_left")):
 		inputDirection = Vector3.LEFT
 	if (Input.is_action_pressed("ui_right")):
