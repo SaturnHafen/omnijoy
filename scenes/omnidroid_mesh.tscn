@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://omnidroid/DefaultMaterial_002.material" type="Material" id=1]
 [ext_resource path="res://omnidroid/DefaultMaterial_005.material" type="Material" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://omnidroid/DefaultMaterial_003.material" type="Material" id=4]
 [ext_resource path="res://omnidroid/DefaultMaterial_001.material" type="Material" id=5]
 [ext_resource path="res://scenes/omnidroid_mesh.gd" type="Script" id=6]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ArrayMesh" id=3]
 resource_name = "robot_osnova001"
@@ -516,7 +517,6 @@ material/3 = null
 process_priority = 1
 root_bone = "Bone"
 tip_bone = "Bone.011"
-override_tip_basis = false
 use_magnet = true
 magnet = Vector3( 5, 0, 1 )
 target_node = NodePath("../../front")
@@ -525,7 +525,6 @@ target_node = NodePath("../../front")
 process_priority = 1
 root_bone = "Bone.012"
 tip_bone = "Bone.023"
-override_tip_basis = false
 use_magnet = true
 magnet = Vector3( -5, 0, 1 )
 target_node = NodePath("../../back")
@@ -534,7 +533,6 @@ target_node = NodePath("../../back")
 process_priority = 1
 root_bone = "Bone.036"
 tip_bone = "Bone.047"
-override_tip_basis = false
 use_magnet = true
 magnet = Vector3( 0, 5, 1 )
 target_node = NodePath("../../left")
@@ -543,22 +541,18 @@ target_node = NodePath("../../left")
 process_priority = 1
 root_bone = "Bone.024"
 tip_bone = "Bone.035"
-override_tip_basis = false
 use_magnet = true
 magnet = Vector3( 0, -5, 1 )
 target_node = NodePath("../../right")
 
-[node name="front" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.48178, 1.19363e-07, -2.73071 )
+[node name="front" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.482, 0, -2.731 )
 
-[node name="back" type="Spatial" parent="."]
+[node name="back" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.482, 0, -2.731 )
 
-[node name="left" type="Spatial" parent="."]
+[node name="left" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.482, -2.731 )
 
-[node name="right" type="Spatial" parent="."]
+[node name="right" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.482, -2.731 )
-
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5, 0, 1 )

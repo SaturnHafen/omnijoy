@@ -45,6 +45,7 @@ var controller_index
 var data
 
 func _ready():
+	print("JoyCon._ready()")
 	set_process(false)
 
 func get_controller_index():
