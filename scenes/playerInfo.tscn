@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="playerInfo" type="Spatial"]
+
+[node name="lives" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 20.0
+text = "Lives: "
+
+[node name="points" type="Label" parent="."]
+margin_left = 94.0
+margin_top = 5.0
+margin_right = 135.0
+margin_bottom = 19.0
+text = "XP: -"
