@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var enableKeybordControll:bool = false
+export var enableKeybordControll: bool = true
 
 export var lower_trigger: float = 0.2
 export var hight_trigger: float = 0.8
@@ -17,8 +17,11 @@ var current_to: Vector3
 var current_acceleration: Vector3 = Vector3(0, 0, 0)
 
 export var animation_duration: float = 0.5
+export var gravity: float = -0.5
+var accum_gravity: float = 0
 
 export var curve: Curve
+export var curve_height: float = 0.25
 
 func init(manager, joycon_id):
 	print("player._init()")
@@ -41,16 +44,21 @@ func _physics_process(delta: float):
 		animation_timer -= delta
 		var time = 1 - (animation_timer / animation_duration)
 		var to = current_from.linear_interpolate(current_to, time)
-		to.y += curve.interpolate(time)
+		var height = curve_height * (current_to - current_from).length()
+		to.y += height * curve.interpolate(time)
 		var velocity = to - global_transform.origin
-		move_and_collide(velocity)
+		var collision = move_and_collide(velocity)
+		if collision:
+			handle_collision(collision)
+		accum_gravity = 0
 	else:
-		if not motion_allowed:
-			pass#move_and_collide(Vector3(1, 0, 0) * delta)
+		accum_gravity += delta * gravity
+		if move_and_collide(Vector3(0, accum_gravity, 0)):
+			accum_gravity = 0
 		motion_allowed = true
 
 func _process(delta):
-	var acceleration = $JoyCon.linear_accel
+	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
 	
 	if motion_allowed and not triggered:
@@ -77,13 +85,18 @@ func getInputDirection()->Vector3:
 	if (Input.is_action_pressed("ui_down")):
 		inputDirection = Vector3.BACK
 	if (Input.is_action_pressed("ui_up")):
-		inputDirection = Vector3.UP
+		inputDirection = Vector3.FORWARD
 	if (Input.is_action_pressed("ui_left")):
 		inputDirection = Vector3.LEFT
 	if (Input.is_action_pressed("ui_right")):
 		inputDirection = Vector3.RIGHT
 	return inputDirection
 
+func handle_collision(collision: KinematicCollision):
+	if collision:
+		animation_timer = 0
+		if collision.collider.is_in_group("DamagingObstacles"):
+			print("you die!")
 
 func _on_joycon_button_pressed(button_name):
 	if button_name == 'math':
