@@ -1,0 +1,43 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/env_objects/Barrel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/env_objects/Cube014.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/env_objects/Cube013.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/env_objects/Cube011.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/env_objects/Cube001.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/env_objects/Barrel-thorns.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/env_objects/Candelabre1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/env_objects/Aloe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/env_objects/Beavertail.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/env_objects/Cube012.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/env_objects/Cube016.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=13]
+
+[node name="rock8" type="Spatial"]
+
+[node name="Aloe" parent="." instance=ExtResource( 9 )]
+
+[node name="Barrel" parent="." instance=ExtResource( 1 )]
+
+[node name="Candelabre1" parent="." instance=ExtResource( 8 )]
+
+[node name="Beavertail" parent="." instance=ExtResource( 10 )]
+
+[node name="Barrel-thorns" parent="." instance=ExtResource( 7 )]
+
+[node name="Cube001" parent="." instance=ExtResource( 6 )]
+
+[node name="Cube011" parent="." instance=ExtResource( 5 )]
+
+[node name="Cube012" parent="." instance=ExtResource( 11 )]
+
+[node name="Cube013" parent="." instance=ExtResource( 4 )]
+
+[node name="Cube014" parent="." instance=ExtResource( 2 )]
+
+[node name="Cube015" parent="." instance=ExtResource( 13 )]
+
+[node name="Cube016" parent="." instance=ExtResource( 12 )]
+
+[node name="Cube017" parent="." instance=ExtResource( 3 )]
