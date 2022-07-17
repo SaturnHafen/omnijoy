@@ -8,7 +8,7 @@ var timerProgressBar
 var timeLeftText
 
 var manager = preload("res://JoyCons/JoyConManager.gd").new()
-var scene = preload("res://scenes/CanyonLowPoly.tscn")
+export var scene = preload("res://scenes/CanyonLowPoly.tscn")
 var omnidroid = load("res://scenes/omnidroid.tscn")
 var current_scene: Node
 var current_droid: Node

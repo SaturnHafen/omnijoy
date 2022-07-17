@@ -25,14 +25,7 @@ layers = 129
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="MotionControlTimeout" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 4 )
 
 [connection signal="button_pressed" from="JoyCon" to="." method="_on_joycon_button_pressed"]
-[connection signal="timeout" from="MotionControlTimeout" to="." method="_on_MotionControlTimeout"]

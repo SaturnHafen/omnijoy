@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=2]
@@ -33,11 +33,40 @@ noise = SubResource( 1 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.956863, 0.815686, 0.576471, 1 )
-roughness = 0.72
+roughness = 0.89
 roughness_texture = SubResource( 2 )
 normal_enabled = true
 normal_scale = -0.4
 normal_texture = SubResource( 5 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.723404, 1 )
+colors = PoolColorArray( 0.8125, 0.956055, 1, 1, 0.633426, 0.849711, 0.976812, 1, 0.34613, 0.6293, 0.835938, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="PanoramaSky" id=7]
+panorama = SubResource( 9 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 7 )
+background_sky_orientation = Basis( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15 )
+background_energy = 1.25
+ambient_light_color = Color( 0.835294, 0.592157, 0.4, 1 )
+fog_enabled = true
+fog_color = Color( 0.858824, 0.858824, 0.858824, 1 )
+fog_sun_color = Color( 1, 0.92549, 0.772549, 1 )
+fog_depth_end = 197.1
+fog_depth_curve = 1.31951
+glow_enabled = true
+glow_intensity = 1.21
+glow_strength = 0.19
+adjustment_enabled = true
+adjustment_brightness = 0.94
+adjustment_contrast = 1.06
+adjustment_saturation = 1.06
 
 [node name="Spatial" type="Spatial"]
 
@@ -48,7 +77,9 @@ use_collision = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.801076, 0.598562, 0, -0.598562, 0.801076, 0, 53.638, 59.2114 )
-light_energy = 1.132
+light_energy = 1.264
+shadow_enabled = true
+shadow_color = Color( 0.831373, 0.831373, 0.831373, 1 )
 
 [node name="Cube017" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.27937, 0, 4.27936, 0, 6.05193, 0, -4.27936, 0, -4.27937, -29.8602, 0, -29.8601 )
@@ -163,3 +194,6 @@ transform = Transform( 0.313708, 0, -0.218797, 0, 0.382471, 0, 0.218797, 0, 0.31
 
 [node name="spawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84245, 50.6127 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )

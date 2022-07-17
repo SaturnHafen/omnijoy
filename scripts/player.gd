@@ -7,6 +7,8 @@ export var hight_trigger: float = 0.8
 
 export var movement_speed: float = 5
 
+export var reference_frame: NodePath
+
 signal try_rolling
 
 var triggered: bool = false
@@ -60,6 +62,9 @@ func _physics_process(delta: float):
 func _process(delta):
 	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
+	var reference_frame_rotation = get_node(reference_frame).global_transform.basis.get_euler().y
+	print(reference_frame_rotation)
+	acceleration = acceleration.rotated(Vector3.UP, reference_frame_rotation)
 	
 	if motion_allowed and not triggered:
 		if acceleration.length_squared() > pow(hight_trigger, 2):
@@ -78,7 +83,6 @@ func startFootMovement(acceleration:Vector3):
 	
 	triggered = true
 	motion_allowed = false
-	$MotionControlTimeout.start()
 	
 func getInputDirection()->Vector3:
 	var inputDirection:Vector3 = Vector3.ZERO
