@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/env_objects/Cube013.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/env_objects/Candelabre1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/env_objects/Cube011.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/playerThing.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/env_objects/Cube001.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/env_objects/Cube016.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/env_objects/Cube012.tscn" type="PackedScene" id=10]
@@ -42,9 +41,6 @@ normal_texture = SubResource( 5 )
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.913055, 0.407837, 0, -0.407837, 0.913055, -3.41462, 8.9932, 50.9921 )
-
 [node name="ground" type="CSGBox" parent="."]
 transform = Transform( 62.3746, 0, 0, 0, 0.342865, 0, 0, 0, 75.0083, -0.0562439, 0.155258, -14.7149 )
 material_override = SubResource( 3 )
@@ -73,7 +69,7 @@ transform = Transform( -3.85321, 0, -5.10635, 0, 6.39704, 0, 5.10635, 0, -3.8532
 transform = Transform( -2.87557, 0, 1.18152, 0, 3.10884, 0, -1.18152, 0, -2.87557, 28.0302, 0, -6.07544 )
 
 [node name="Cube022" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1.61079, 0, 2.65899, 0, 3.10884, 0, -2.65899, 0, -1.61079, 3.89562, 0, -35.0363 )
+transform = Transform( -1.61079, 0, 2.65899, 0, 3.10884, 0, -2.65899, 0, -1.61079, -4.06725, 0, -35.0363 )
 
 [node name="Cube013" parent="." instance=ExtResource( 4 )]
 transform = Transform( 3.28073, 0, 9.59649, 0, 10.1417, 0, -9.59649, 0, 3.28073, -61.4374, 0, 8.71173 )
@@ -165,5 +161,5 @@ transform = Transform( 0.393071, 0, -0.326659, 0, 0.511088, 0, 0.326659, 0, 0.39
 [node name="Aloe2" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.313708, 0, -0.218797, 0, 0.382471, 0, 0.218797, 0, 0.313708, -14.2547, 0, 2.55504 )
 
-[node name="playerThing" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.38353, 39.0603 )
+[node name="spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84245, 50.6127 )
