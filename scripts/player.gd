@@ -53,6 +53,8 @@ func _physics_process(delta: float):
 		if collision:
 			handle_collision(collision)
 		accum_gravity = 0
+		if time > 0.95:
+			$walkSound.play()
 	else:
 		accum_gravity += delta * gravity
 		if move_and_collide(Vector3(0, accum_gravity, 0)):
