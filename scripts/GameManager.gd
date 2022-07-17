@@ -31,6 +31,7 @@ func _process(delta):
 
 func initialize_main_scene():
 	current_scene = scene.instance()
+	$MenuMusic.stop()
 	add_child(current_scene)
 	print(current_scene)
 	spawn_droid()
@@ -56,3 +57,4 @@ func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
 	initialize_main_scene()
+	$MenuMusic.start()
