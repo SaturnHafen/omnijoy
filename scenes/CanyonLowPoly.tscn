@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/env_objects/Cube013.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/env_objects/Candelabre1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/env_objects/Cube011.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/env_objects/mrIncredible.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/env_objects/Cube001.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/env_objects/Cube016.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/env_objects/Cube012.tscn" type="PackedScene" id=10]
@@ -193,7 +194,10 @@ transform = Transform( 0.393071, 0, -0.326659, 0, 0.511088, 0, 0.326659, 0, 0.39
 transform = Transform( 0.313708, 0, -0.218797, 0, 0.382471, 0, 0.218797, 0, 0.313708, -14.2547, 0, 2.55504 )
 
 [node name="spawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84245, 50.6127 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12013, 4.23448, 50.4937 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="MrIncredible" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.0145927, 0.00618459, -6.48783e-05, -0.000533333, 0.00142391, 0.0157762, 0.00616189, -0.0145232, 0.00151913, 0, 0.472789, 0 )
