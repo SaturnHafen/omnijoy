@@ -8,21 +8,24 @@ var timerProgressBar
 var timeLeftText
 
 var manager = preload("res://JoyCons/JoyConManager.gd").new()
-export var scene = preload("res://scenes/CanyonLowPoly.tscn")
+export var sceneLvl1 = preload("res://scenes/CanyonLowPoly.tscn")
+export var sceneLvl2 = preload("res://scenes/CanyonHighPoly.tscn")
+
 var omnidroid = load("res://scenes/omnidroid.tscn")
 var current_scene: Node
 var current_droid: Node
+var current_lvlNumber:int
 var joyconCount:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	joyconCount = manager.init_devices()
-	if joyconCount < 4:
-		assert(false, "There must be 4 JoyCons")
+	#if joyconCount < 4:
+	#	assert(false, "There must be 4 JoyCons")
 	
 	$MainMenu/VBoxContainer/JoyconCountLabel.displayJoyconCount(joyconCount)
 	
-	initialize_main_scene()
+
 
 func _process(delta):
 	if is_instance_valid(timer):
@@ -35,8 +38,8 @@ func _process(delta):
 		timeLeftText.text = 'TIME TO KILL: ' + str(int(timerProgressBar.value))
 
 
-func initialize_main_scene():
-	current_scene = scene.instance()
+func initialize_main_scene(lvlScene):
+	current_scene = lvlScene.instance()
 	$MenuMusic.stop()
 	add_child(current_scene)
 	print(current_scene)
@@ -62,5 +65,32 @@ func spawn_droid():
 func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
-	initialize_main_scene()
-	$MenuMusic.start()
+	if current_lvlNumber == 1:
+		initialize_main_scene(sceneLvl1)
+	else:
+		initialize_main_scene(sceneLvl2)
+	
+	$MenuMusic.play()
+	
+func game_won():
+	print("You win!")
+	$MainMenu/VBoxContainer/Label.text = "Incredible!"
+	showMenu(true)
+	current_scene.queue_free()
+	current_droid.queue_free()
+	
+	
+func showMenu(show:bool):
+	$MainMenu.visible = show
+	pass
+	
+	
+func loadLvl1():
+	showMenu((false))
+	current_lvlNumber = 1
+	initialize_main_scene(sceneLvl1)
+	
+func loadLvl2():
+	showMenu(false)
+	current_lvlNumber = 2
+	initialize_main_scene(sceneLvl2)

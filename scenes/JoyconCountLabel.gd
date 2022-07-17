@@ -14,6 +14,3 @@ func displayJoyconCount(count:int):
 #	pass
 
 
-func _on_Button2_pressed():
-	displayJoyconCount(2)
-	pass # Replace with function body.
