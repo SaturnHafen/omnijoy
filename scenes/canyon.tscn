@@ -1,4 +1,4 @@
-s[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://env_assets/canyon/canyonSmall.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scenes/env_objects/mrIncredible.tscn" type="PackedScene" id=2]
