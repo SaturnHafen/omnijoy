@@ -574,6 +574,9 @@ use_magnet = true
 magnet = Vector3( 0, -5, 1 )
 target_node = NodePath("../../../right")
 
+[node name="omnidroidHappy" type="AudioStreamPlayer" parent="body"]
+stream = ExtResource( 2 )
+
 [node name="TryRollingTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -583,9 +586,6 @@ one_shot = true
 [node name="Rolling" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-
-[node name="omnidroidHappy" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
 
 [connection signal="try_rolling" from="front" to="." method="_on_front_try_rolling"]
 [connection signal="try_rolling" from="back" to="." method="_on_back_try_rolling"]

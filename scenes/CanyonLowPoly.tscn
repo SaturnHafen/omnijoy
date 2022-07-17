@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=2]
@@ -40,12 +40,20 @@ normal_enabled = true
 normal_scale = -0.4
 normal_texture = SubResource( 5 )
 
-[sub_resource type="ProceduralSky" id=7]
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.723404, 1 )
+colors = PoolColorArray( 0.8125, 0.956055, 1, 1, 0.633426, 0.849711, 0.976812, 1, 0.34613, 0.6293, 0.835938, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="PanoramaSky" id=7]
+panorama = SubResource( 9 )
 
 [sub_resource type="Environment" id=6]
 background_mode = 2
 background_sky = SubResource( 7 )
-background_sky_orientation = Basis( 1, 0, 0, 0.023, 1, 0, 0, 0, 1 )
+background_sky_orientation = Basis( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15 )
 background_energy = 1.25
 ambient_light_color = Color( 0.835294, 0.592157, 0.4, 1 )
 fog_enabled = true
