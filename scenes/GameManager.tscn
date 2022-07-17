@@ -65,3 +65,9 @@ autoplay = true
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button" to="." method="loadLvl1"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button2" to="." method="loadLvl2"]
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

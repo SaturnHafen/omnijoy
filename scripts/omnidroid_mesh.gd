@@ -10,6 +10,9 @@ var rollers = {
 	back = false,
 }
 
+export var body_linear_damp: int = 4
+export var body_angular_damp: int = 5
+
 var rolling_allowed = true
 var rolling = false
 
@@ -20,8 +23,8 @@ func _ready():
 	$body/Skeleton/ik_front.start()
 	$body/Skeleton/ik_left.start()
 	$body/Skeleton/ik_right.start()
-	$body.linear_damp = 4
-	$body.angular_damp = 5
+	$body.linear_damp = body_linear_damp
+	$body.angular_damp = body_angular_damp
 
 func init(manager):
 	joyconManager = manager
@@ -60,8 +63,8 @@ func _process(delta):
 	
 
 func _on_body_collide(body):
-	print("you die (body)!")
-
+	pass
+	
 func try_start_rolling():
 	print("trying to roll...")
 	
@@ -79,7 +82,8 @@ func try_start_rolling():
 		print("Start rolling")
 		rolling_allowed = false
 		rolling = true
-		
+		$body.linear_damp = 0
+		$body.angular_damp = 0
 		$Rolling.start()
 		hide_arms()
 		$body.add_central_force(Vector3(rolling_speed, 0, 0))
@@ -133,10 +137,10 @@ func show_arms():
 	$body/Skeleton.visible = true
 
 func reposition_arms():
-	$front.translation = $body.translation + Vector3(2.482, 0, 0)
-	$back.translation = $body.translation + Vector3(-2.482, 0, 0)
-	$left.translation = $body.translation + Vector3(0, 2.482, 0)
-	$right.translation = $body.translation + Vector3(0, -2.482, 0)
+	$front.translation = $body.translation + Vector3(2.482, 0, 1)
+	$back.translation = $body.translation + Vector3(-2.482, 0, 1)
+	$left.translation = $body.translation + Vector3(0, 2.482, 1)
+	$right.translation = $body.translation + Vector3(0, -2.482, 1)
 	
 	$body.rotation_degrees = Vector3.ZERO
 	$body.angular_velocity = Vector3.ZERO
@@ -146,4 +150,6 @@ func _on_Rolling_timeout():
 	reposition_arms()
 	show_arms()
 	rolling = false
+	$body.linear_damp = body_linear_damp
+	$body.angular_damp = body_angular_damp
 	$RollingTimeout.start()

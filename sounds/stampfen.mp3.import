@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stampfen.mp3-278d12d44873e69c94b61f8ea41e7a5e.mp3str"
+
+[deps]
+
+source_file="res://sounds/stampfen.mp3"
+dest_files=[ "res://.import/stampfen.mp3-278d12d44873e69c94b61f8ea41e7a5e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

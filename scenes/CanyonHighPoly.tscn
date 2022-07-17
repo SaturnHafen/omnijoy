@@ -1,18 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/canyon_colliders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/mrIncredible.tscn" type="PackedScene" id=2]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.396078, 0.32549, 0.286275, 1 )
+sky_horizon_color = Color( 0.847059, 0.780392, 0.705882, 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_enabled = true
+fog_color = Color( 0.988235, 0.552941, 0.447059, 1 )
+
+[node name="Spatial2" type="Spatial"]
 
 [node name="spawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.383, 6.05562, 3.13703 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4484, 8.20941, 6.68222 )
 
 [node name="canyon" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.736262, -0.538737, 0.409487, 0, 0.605127, 0.796129, -0.676696, -0.58616, 0.445532, 0, 9.9558, 0 )
+shadow_enabled = true
 
 [node name="mrIncredible2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 48.7099, 1.31522, 4.16862 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
