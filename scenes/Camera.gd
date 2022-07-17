@@ -16,6 +16,6 @@ func _physics_process(delta):
 	var forward = Vector3(1, 0, 1) * target_transform.basis.x
 	var target_position = target_transform.origin - offset.x * forward + Vector3(0, offset.y, 0)
 	global_translate(position_lag * (target_position - global_transform.origin))
-	
+
 	current_look_at = current_look_at.linear_interpolate(target_transform.origin, rotation_lag)
 	look_at(current_look_at, Vector3.UP)

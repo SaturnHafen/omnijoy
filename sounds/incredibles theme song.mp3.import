@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/incredibles theme song.mp3-1f7763f5fd82d68971599028d402c9e8.mp3str"
+
+[deps]
+
+source_file="res://sounds/incredibles theme song.mp3"
+dest_files=[ "res://.import/incredibles theme song.mp3-1f7763f5fd82d68971599028d402c9e8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

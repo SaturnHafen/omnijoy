@@ -83,7 +83,6 @@ func startFootMovement(acceleration:Vector3):
 	
 	triggered = true
 	motion_allowed = false
-	$MotionControlTimeout.start()
 	
 func getInputDirection()->Vector3:
 	var inputDirection:Vector3 = Vector3.ZERO
