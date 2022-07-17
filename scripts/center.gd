@@ -7,6 +7,7 @@ func _on_body_entered(body: Node):
 		body.get_node("AudioStreamPlayer3D").stop()
 		get_tree().get_root().get_node("Game").game_won()
 		
+		$omnidroidHappy.play()
 		return
 	
 	if not get_parent().rolling:
