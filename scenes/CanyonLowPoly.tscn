@@ -1,0 +1,199 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://scenes/env_objects/Cube017.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/env_objects/Cube015.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/env_objects/Cube014.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/env_objects/Cube013.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/env_objects/Candelabre1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/env_objects/Cube011.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/env_objects/Cube001.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/env_objects/Cube016.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/env_objects/Cube012.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/env_objects/Barrel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/env_objects/Beavertail.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/env_objects/Aloe.tscn" type="PackedScene" id=13]
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+width = 926
+height = 945
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = -23
+
+[sub_resource type="NoiseTexture" id=2]
+width = 272
+height = 383
+as_normalmap = true
+bump_strength = 6.9
+noise = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.956863, 0.815686, 0.576471, 1 )
+roughness = 0.89
+roughness_texture = SubResource( 2 )
+normal_enabled = true
+normal_scale = -0.4
+normal_texture = SubResource( 5 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.723404, 1 )
+colors = PoolColorArray( 0.8125, 0.956055, 1, 1, 0.633426, 0.849711, 0.976812, 1, 0.34613, 0.6293, 0.835938, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="PanoramaSky" id=7]
+panorama = SubResource( 9 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 7 )
+background_sky_orientation = Basis( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15 )
+background_energy = 1.25
+ambient_light_color = Color( 0.835294, 0.592157, 0.4, 1 )
+fog_enabled = true
+fog_color = Color( 0.858824, 0.858824, 0.858824, 1 )
+fog_sun_color = Color( 1, 0.92549, 0.772549, 1 )
+fog_depth_end = 197.1
+fog_depth_curve = 1.31951
+glow_enabled = true
+glow_intensity = 1.21
+glow_strength = 0.19
+adjustment_enabled = true
+adjustment_brightness = 0.94
+adjustment_contrast = 1.06
+adjustment_saturation = 1.06
+
+[node name="Spatial" type="Spatial"]
+
+[node name="ground" type="CSGBox" parent="."]
+transform = Transform( 62.3746, 0, 0, 0, 0.342865, 0, 0, 0, 75.0083, -0.0562439, 0.155258, -14.7149 )
+material_override = SubResource( 3 )
+use_collision = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.801076, 0.598562, 0, -0.598562, 0.801076, 0, 53.638, 59.2114 )
+light_energy = 1.264
+shadow_enabled = true
+shadow_color = Color( 0.831373, 0.831373, 0.831373, 1 )
+
+[node name="Cube017" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.27937, 0, 4.27936, 0, 6.05193, 0, -4.27936, 0, -4.27937, -29.8602, 0, -29.8601 )
+
+[node name="Cube016" parent="." instance=ExtResource( 9 )]
+transform = Transform( 3.33733, 0, -3.97093, 0, 5.18711, 0, 3.97093, 0, 3.33733, -37.1143, 0, 31.1924 )
+
+[node name="Cube024" parent="." instance=ExtResource( 9 )]
+transform = Transform( -5.30217, 0, -4.85175, 0, 7.18696, 0, 4.85175, 0, -5.30217, -3.383, 0, -65.4679 )
+
+[node name="Cube015" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.52339, 0, 4.52338, 0, 6.39704, 0, -4.52338, 0, -4.52339, 43.5385, 0, 8.26571 )
+
+[node name="Cube021" parent="." instance=ExtResource( 2 )]
+transform = Transform( -3.85321, 0, -5.10635, 0, 6.39704, 0, 5.10635, 0, -3.85321, 20.3947, 0, -47.5221 )
+
+[node name="Cube014" parent="." instance=ExtResource( 3 )]
+transform = Transform( -2.87557, 0, 1.18152, 0, 3.10884, 0, -1.18152, 0, -2.87557, 28.0302, 0, -6.07544 )
+
+[node name="Cube022" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1.61079, 0, 2.65899, 0, 3.10884, 0, -2.65899, 0, -1.61079, -4.06725, 0, -35.0363 )
+
+[node name="Cube013" parent="." instance=ExtResource( 4 )]
+transform = Transform( 3.28073, 0, 9.59649, 0, 10.1417, 0, -9.59649, 0, 3.28073, -61.4374, 0, 8.71173 )
+
+[node name="Cube020" parent="." instance=ExtResource( 4 )]
+transform = Transform( 4.86791, 0, 4.95364, 0, 6.94512, 0, -4.95364, 0, 4.86791, 41.7514, 0, 42.5061 )
+
+[node name="Cube026" parent="." instance=ExtResource( 4 )]
+transform = Transform( 4.82137, 0, -10.1478, 0, 11.2349, 0, 10.1478, 0, 4.82137, 31.5358, -1.65852, -93.521 )
+
+[node name="Cube027" parent="." instance=ExtResource( 4 )]
+transform = Transform( -6.98461, 0, 4.28972, 0, 8.1967, 0, -4.28972, 0, -6.98461, -51.9374, -0.774338, -13.3468 )
+
+[node name="Cube025" parent="." instance=ExtResource( 4 )]
+transform = Transform( 7.29317, 0, 7.42161, 0, 10.4053, 0, -7.42161, 0, 7.29317, 53.1937, 0, -32.7464 )
+
+[node name="Cube012" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.84341, 0, -3.18469, 0, 5.79663, 0, 3.18469, 0, -4.84341, 31.9967, 0, -21.0388 )
+
+[node name="Cube018" parent="." instance=ExtResource( 10 )]
+transform = Transform( -3.96391, 0, -2.95742, 0, 4.9456, 0, 2.95742, 0, -3.96391, -44.8446, 0, 40.5295 )
+
+[node name="Cube023" parent="." instance=ExtResource( 10 )]
+transform = Transform( 4.09887, 0, -8.25274, 0, 9.21458, 0, 8.25274, 0, 4.09887, -33.5634, 0, -46.1676 )
+
+[node name="Cube011" parent="." instance=ExtResource( 6 )]
+transform = Transform( -2.3712, 0, 2.3712, 0, 3.35338, 0, -2.3712, 0, -2.3712, 13.6026, 0, 13.6025 )
+
+[node name="Cube019" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1.7962, 0, -1.77593, 0, 2.52592, 0, 1.77593, 0, 1.7962, -14.9516, 0, 36.1524 )
+
+[node name="Cube001" parent="." instance=ExtResource( 8 )]
+transform = Transform( -1.56266, 0, 2.05946, 0, 2.5852, 0, -2.05946, 0, -1.56266, -23.5003, 0, -4.6218 )
+
+[node name="Candelabre1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.901022, 0, -0.507658, 0, 1.03419, 0, 0.507658, 0, 0.901022, 19.3638, 0.0466652, 22.3848 )
+
+[node name="Candelabre4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.506235, 0, -0.605536, 0, 0.789271, 0, 0.605536, 0, 0.506235, 21.636, 0.148197, -14.1598 )
+
+[node name="Candelabre2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.404331, 0, 0.559794, 0, 0.690546, 0, -0.559794, 0, 0.404331, -19.5973, 0.0466652, 0.763778 )
+
+[node name="Candelabre3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.708466, 0, -0.78007, 0, 1.05377, 0, 0.78007, 0, 0.708466, 21.1968, 0.0466652, -27.2356 )
+
+[node name="Beavertail" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.094986, 0, 1.22218, 0, 1.22587, 0, -1.22218, 0, 0.094986, -21.3046, 0, 13.3294 )
+
+[node name="Beavertail3" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.694726, 0, 1.01, 0, 1.22587, 0, -1.01, 0, -0.694726, 20.3433, 0, 32.4501 )
+
+[node name="Beavertail2" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.623821, 0, -0.382847, 0, 0.731932, 0, 0.382847, 0, -0.623821, -18.2865, 0, 11.8949 )
+
+[node name="Barrel" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.614797, 0, 0, 0, 0.614797, 0, 0, 0, 0.614797, -18.8252, 0.0257206, 18.1602 )
+
+[node name="Barrel2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.0828953, 0, -0.609183, 0, 0.614797, 0, 0.609183, 0, 0.0828953, 14.7765, 0.0257206, 23.7977 )
+
+[node name="Barrel3" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.718649, 0, -0.784405, 0, 1.06384, 0, 0.784405, 0, -0.718649, 17.1681, 0.0257206, 26.2356 )
+
+[node name="Barrel6" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.429746, 0, -0.469068, 0, 0.636166, 0, 0.469068, 0, -0.429746, 21.7999, 0.0257206, -20.5016 )
+
+[node name="Barrel4" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.616971, 0, -0.673424, 0, 0.91332, 0, 0.673424, 0, -0.616971, 17.1681, 0.0257206, -23.0138 )
+
+[node name="Barrel5" parent="." instance=ExtResource( 11 )]
+transform = Transform( -0.613515, 0, -0.669652, 0, 0.908204, 0, 0.669652, 0, -0.613515, 17.1681, 0.0257206, -23.0138 )
+
+[node name="Aloe" parent="." instance=ExtResource( 13 )]
+transform = Transform( -0.508105, 0, 0.66299, 0, 0.8353, 0, -0.66299, 0, -0.508105, -17.5498, 0, 5.80247 )
+
+[node name="Aloe3" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.00189531, 0, -0.835298, 0, 0.8353, 0, 0.835298, 0, 0.00189531, 5.13943, 0, 36.7613 )
+
+[node name="Aloe5" parent="." instance=ExtResource( 13 )]
+transform = Transform( -0.108089, 0, 0.828277, 0, 0.8353, 0, -0.828277, 0, -0.108089, 5.13943, 0, -16.2346 )
+
+[node name="Aloe6" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.52809, 0, -0.0320032, 0, 0.529059, 0, 0.0320032, 0, 0.52809, 9.64687, 0, -13.0353 )
+
+[node name="Aloe4" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.393071, 0, -0.326659, 0, 0.511088, 0, 0.326659, 0, 0.393071, 5.09003, 0, 41.5983 )
+
+[node name="Aloe2" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.313708, 0, -0.218797, 0, 0.382471, 0, 0.218797, 0, 0.313708, -14.2547, 0, 2.55504 )
+
+[node name="spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84245, 50.6127 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
