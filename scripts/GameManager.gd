@@ -35,6 +35,7 @@ func _process(delta):
 
 func initialize_main_scene():
 	current_scene = scene.instance()
+	$MenuMusic.stop()
 	add_child(current_scene)
 	spawn_droid()
 
@@ -62,4 +63,4 @@ func game_over():
 
 func _on_ReloadTimer_timeout():
 	initialize_main_scene()
-
+	$MenuMusic.start()
