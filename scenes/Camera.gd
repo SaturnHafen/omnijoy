@@ -5,7 +5,7 @@ export var target: NodePath
 onready var current_look_at: Vector3 = get_target_transform().origin
 
 var offset: Vector2 = Vector2(8, 5)
-var position_lag: float = 0.002
+var position_lag: float = 0.01
 var rotation_lag: float = 0.04
 
 func get_target_transform():

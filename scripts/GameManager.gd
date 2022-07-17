@@ -71,12 +71,7 @@ func spawn_droid():
 func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
-	if current_lvlNumber == 1:
-		initialize_main_scene(sceneLvl1)
-	else:
-		initialize_main_scene(sceneLvl2)
 	
-	$MenuMusic.play()
 	deathCount += 1
 	$ReloadTimer.start()
 	
@@ -84,13 +79,14 @@ func game_won():
 	print("You win!")
 	$MainMenu/VBoxContainer/Label.text = "Incredible!"
 	showMenu(true)
+	$MenuMusic.play()
 	current_scene.queue_free()
 	current_droid.queue_free()
 	
 	
 func showMenu(show:bool):
 	$MainMenu.visible = show
-	pass
+	
 	
 	
 func loadLvl1():
@@ -105,5 +101,8 @@ func loadLvl2():
 
 
 func _on_ReloadTimer_timeout():
-	initialize_main_scene()
-	$MenuMusic.start()
+	if current_lvlNumber == 1:
+		initialize_main_scene(sceneLvl1)
+	else:
+		initialize_main_scene(sceneLvl2)
+
