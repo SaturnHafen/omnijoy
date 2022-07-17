@@ -62,9 +62,9 @@ func spawn_droid():
 func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
+	deathCount += 1
 	$ReloadTimer.start()
 
 func _on_ReloadTimer_timeout():
 	initialize_main_scene()
-	deathCount += 1
 	$MenuMusic.start()
