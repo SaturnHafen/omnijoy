@@ -5,13 +5,19 @@ export var scene = preload("res://scenes/CanyonLowPoly.tscn")
 var omnidroid = load("res://scenes/omnidroid.tscn")
 var current_scene: Node
 var current_droid: Node
+var joyconCount:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if manager.init_devices() < 4:
+	joyconCount = manager.init_devices()
+	if joyconCount < 4:
 		assert(false, "There must be 4 JoyCons")
 	
+	
+	$MainMenu/VBoxContainer/JoyconCountLabel.displayJoyconCount(joyconCount)
+	
 	initialize_main_scene()
+
 
 
 func initialize_main_scene():

@@ -1,5 +1,6 @@
 extends KinematicBody
 
+export var playerID:int = -1
 export var enableKeybordControll: bool = true
 
 export var lower_trigger: float = 0.2
@@ -61,6 +62,8 @@ func _process(delta):
 	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
 	
+	updateKeyboardUsage()
+	
 	if motion_allowed and not triggered:
 		if acceleration.length_squared() > pow(hight_trigger, 2):
 			startFootMovement(acceleration)
@@ -90,6 +93,22 @@ func getInputDirection()->Vector3:
 	if (Input.is_action_pressed("ui_right")):
 		inputDirection = Vector3.RIGHT
 	return inputDirection
+
+func updateKeyboardUsage():
+	match playerID:
+		0:
+			if (Input.is_action_just_pressed("keyboard1")):
+				enableKeybordControll = not enableKeybordControll
+		1:
+			if (Input.is_action_just_pressed("keyboard2")):
+				enableKeybordControll = not enableKeybordControll
+		2:
+			if (Input.is_action_just_pressed("keyboard3")):
+				enableKeybordControll = not enableKeybordControll
+		3:
+			if (Input.is_action_just_pressed("keyboard4")):
+				enableKeybordControll = not enableKeybordControll
+	
 
 func handle_collision(collision: KinematicCollision):
 	if collision:
