@@ -137,10 +137,10 @@ func show_arms():
 	$body/Skeleton.visible = true
 
 func reposition_arms():
-	$front.translation = $body.translation + Vector3(2.482, 0, 1)
-	$back.translation = $body.translation + Vector3(-2.482, 0, 1)
-	$left.translation = $body.translation + Vector3(0, 2.482, 1)
-	$right.translation = $body.translation + Vector3(0, -2.482, 1)
+	$front.translation = $body.translation + Vector3(2.482, 0, 2)
+	$back.translation = $body.translation + Vector3(-2.482, 0, 2)
+	$left.translation = $body.translation + Vector3(0, 2.482, 2)
+	$right.translation = $body.translation + Vector3(0, -2.482, 2)
 	
 	$body.rotation_degrees = Vector3.ZERO
 	$body.angular_velocity = Vector3.ZERO
