@@ -569,4 +569,21 @@ use_magnet = true
 magnet = Vector3( 0, -5, 1 )
 target_node = NodePath("../../../right")
 
+[node name="TryRollingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RollingTimeout" type="Timer" parent="."]
+one_shot = true
+
+[node name="Rolling" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="try_rolling" from="front" to="." method="_on_front_try_rolling"]
+[connection signal="try_rolling" from="back" to="." method="_on_back_try_rolling"]
+[connection signal="try_rolling" from="left" to="." method="_on_left_try_rolling"]
+[connection signal="try_rolling" from="right" to="." method="_on_right_try_rolling"]
 [connection signal="body_entered" from="body" to="body" method="_on_body_entered"]
+[connection signal="timeout" from="TryRollingTimer" to="." method="_on_TryRollingTimer_timeout"]
+[connection signal="timeout" from="RollingTimeout" to="." method="_on_RollingTimeout_timeout"]
+[connection signal="timeout" from="Rolling" to="." method="_on_Rolling_timeout"]

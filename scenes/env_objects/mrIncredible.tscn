@@ -36,4 +36,4 @@ stream = ExtResource( 5 )
 unit_db = 25.0
 max_db = 2.4
 autoplay = true
-max_distance = 50.0
+max_distance = 90.0
