@@ -409,7 +409,7 @@ __meta__ = {
 }
 
 [node name="ground" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.522045, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.395, 0 )
 
 [node name="CollisionShape128" type="CollisionShape" parent="ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.448208 )
@@ -556,7 +556,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.448208 )
 shape = SubResource( 39 )
 
 [node name="stones" type="StaticBody" parent="." groups=["DamagingObstacles"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.522045, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.395, 0 )
 
 [node name="CollisionShape34" type="CollisionShape" parent="stones"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.448208 )

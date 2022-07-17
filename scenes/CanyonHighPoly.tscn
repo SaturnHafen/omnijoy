@@ -6,10 +6,10 @@
 [node name="Spatial" type="Spatial"]
 
 [node name="spawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.0418, 6.05562, 3.29323 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4484, 6.05562, 6.68222 )
 
 [node name="canyon" parent="." instance=ExtResource( 1 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.148605, 0, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.736262, -0.538737, 0.409487, 0, 0.605127, 0.796129, -0.676696, -0.58616, 0.445532, 0, 9.9558, 0 )
