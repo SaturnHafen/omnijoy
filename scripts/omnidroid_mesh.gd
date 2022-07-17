@@ -19,6 +19,8 @@ func _ready():
 	$body/Skeleton/ik_front.start()
 	$body/Skeleton/ik_left.start()
 	$body/Skeleton/ik_right.start()
+	$body.linear_damp = 4
+	$body.angular_damp = 5
 
 func init(manager):
 	$front.init(manager, 0)
@@ -28,11 +30,18 @@ func init(manager):
 
 func _physics_process(delta):
 	if not rolling:
-		$body.add_central_force($body.linear_velocity * -4)
-		for arm in [$front, $back, $left, $right]:
-			var target = $body.global_transform.origin
-			var source = arm.global_transform.origin
-			var direction = target - source
+		var body_transform = $body.global_transform
+		var offset_scale = 0.2
+		for arm_offset in [[$front, Vector2(1, 0)], [$back, Vector2(-1, 0)], [$left, Vector2(0, -1)], [$right, Vector2(0, 1)]]:
+			var arm = arm_offset[0]
+			var offset = arm_offset[1]
+			var center = body_transform.origin
+			var socket_offset = \
+				offset.x * body_transform.basis.x * offset_scale + \
+				offset.y * body_transform.basis.y * offset_scale
+			var socket = center + socket_offset
+			var foot = arm.global_transform.origin
+			var direction = socket - foot
 			var length = direction.length()
 			var goal_distance = 4
 			var strength = goal_distance - length
@@ -41,8 +50,8 @@ func _physics_process(delta):
 			$body.add_central_force(force)
 
 func _on_body_collide(body):
-	print("you die (body)!")
-
+	pass
+	
 func try_start_rolling():
 	print("trying to roll...")
 	

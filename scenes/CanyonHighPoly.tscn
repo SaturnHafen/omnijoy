@@ -3,10 +3,10 @@
 [ext_resource path="res://scenes/canyon_colliders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/env_objects/mrIncredible.tscn" type="PackedScene" id=2]
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial2" type="Spatial"]
 
 [node name="spawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4484, 6.05562, 6.68222 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4484, 8.20941, 6.68222 )
 
 [node name="canyon" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
