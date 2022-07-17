@@ -65,7 +65,7 @@ func _process(delta):
 	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
 	var reference_frame_rotation = get_node(reference_frame).global_transform.basis.get_euler().y
-	print(reference_frame_rotation)
+
 	acceleration = acceleration.rotated(Vector3.UP, reference_frame_rotation)
 	
 	if motion_allowed and not triggered:
