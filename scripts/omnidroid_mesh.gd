@@ -15,6 +15,7 @@ export var body_angular_damp: int = 5
 
 var rolling_allowed = true
 var rolling = false
+var rolling_count_down = 0
 
 export var rolling_speed: int = 400
 
@@ -35,7 +36,13 @@ func init(manager):
 	$right.init(manager, 3)
 
 func _physics_process(delta):
-	if not rolling:
+	if rolling_count_down > 0:
+		rolling_count_down -= delta
+	if rolling_count_down < 0 and rolling:
+		rolling = false
+		print("stopped rolling")
+		rolling_count_down = 0
+	if rolling_count_down > 0 or not rolling:
 		var body_transform = $body.global_transform
 		var offset_scale = 0.2
 		for arm_offset in [[$front, Vector2(1, 0)], [$back, Vector2(-1, 0)], [$left, Vector2(0, -1)], [$right, Vector2(0, 1)]]:
@@ -149,7 +156,7 @@ func reposition_arms():
 func _on_Rolling_timeout():
 	reposition_arms()
 	show_arms()
-	rolling = false
+	rolling_count_down = 1
 	$body.linear_damp = body_linear_damp
 	$body.angular_damp = body_angular_damp
 	$RollingTimeout.start()

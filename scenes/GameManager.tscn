@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://sounds/omnidroidHappy.mp3" type="AudioStream" id=2]
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://scenes/JoyconCountLabel.gd" type="Script" id=4]
 [ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=6]
@@ -64,6 +65,9 @@ autoplay = true
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="omnidroidHappy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button" to="." method="loadLvl1"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button2" to="." method="loadLvl2"]

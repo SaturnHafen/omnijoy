@@ -80,6 +80,7 @@ func game_won():
 	$MainMenu/VBoxContainer/Label.text = "Incredible!"
 	showMenu(true)
 	$MenuMusic.play()
+	$omnidroidHappy.play()
 	current_scene.queue_free()
 	current_droid.queue_free()
 	
