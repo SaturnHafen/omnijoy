@@ -6,12 +6,12 @@
 
 [node name="playerInfo" type="Spatial"]
 
-[node name="lives" type="Label" parent="."]
+[node name="DeathCount" type="Label" parent="."]
 margin_left = 12.0
 margin_top = 46.0
 margin_right = 126.0
 margin_bottom = 60.0
-text = "Lives: 1, I guess?"
+text = "death count:"
 uppercase = true
 
 [node name="TimerProgressBar" type="ProgressBar" parent="."]

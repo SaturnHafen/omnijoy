@@ -7,6 +7,8 @@ var timer
 var timerProgressBar
 var timeLeftText
 
+var deathCount = 0
+
 var manager = preload("res://JoyCons/JoyConManager.gd").new()
 export var scene = preload("res://scenes/CanyonLowPoly.tscn")
 var omnidroid = load("res://scenes/omnidroid.tscn")
@@ -16,7 +18,7 @@ var current_droid: Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if manager.init_devices() < 4:
-		assert(false, "There must be 4 JoyCons")
+		pass  # assert(false, "There must be 4 JoyCons")
 	initialize_main_scene()
 
 func _process(delta):
@@ -55,10 +57,12 @@ func spawn_droid():
 	timerProgressBar.min_value = 0
 	timerProgressBar.max_value = TIME_TO_KILL
 	timer.start()
+	droid.get_node("Camera/playerInfo/DeathCount").text = 'death count: ' + str(deathCount)
 
 func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
+	deathCount += 1
 	$ReloadTimer.start()
 
 func _on_ReloadTimer_timeout():
