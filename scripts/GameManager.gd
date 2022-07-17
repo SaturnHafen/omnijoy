@@ -26,13 +26,16 @@ func _process(delta):
 		var r = 1 - timerProgressBar.value / timerProgressBar.max_value
 		var g = timerProgressBar.value / timerProgressBar.max_value
 		styleBox.bg_color = Color(r, g, 0)
+		
+		if timer.time_left == 0:
+			game_over()
+		
 	if is_instance_valid(timeLeftText):
 		timeLeftText.text = 'TIME TO KILL: ' + str(int(timerProgressBar.value))
 
 func initialize_main_scene():
 	current_scene = scene.instance()
 	add_child(current_scene)
-	print(current_scene)
 	spawn_droid()
 
 func spawn_droid():
@@ -55,4 +58,8 @@ func spawn_droid():
 func game_over():
 	current_scene.queue_free()
 	current_droid.queue_free()
+	$ReloadTimer.start()
+
+func _on_ReloadTimer_timeout():
 	initialize_main_scene()
+

@@ -26,7 +26,6 @@ export var curve: Curve
 export var curve_height: float = 0.25
 
 func init(manager, joycon_id):
-	print("player._init()")
 	$JoyCon.set_controller(joycon_id, manager)
 	
 	var material = SpatialMaterial.new()
@@ -63,7 +62,6 @@ func _process(delta):
 	var acceleration = $JoyCon.raw_accel
 	acceleration *= Vector3(1, 0, 1)
 	var reference_frame_rotation = get_node(reference_frame).global_transform.basis.get_euler().y
-	print(reference_frame_rotation)
 	acceleration = acceleration.rotated(Vector3.UP, reference_frame_rotation)
 	
 	if motion_allowed and not triggered:

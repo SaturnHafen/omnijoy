@@ -41,8 +41,8 @@ func _physics_process(delta):
 			$body.add_central_force(force)
 
 func _on_body_collide(body):
-	print("you die (body)!")
-
+	pass
+	
 func try_start_rolling():
 	print("trying to roll...")
 	
